@@ -5,7 +5,7 @@ export function App() {
   return (
     <>
       <header>
-        <h1>Welcome to my SPA</h1>
+        <h1>Pokegotchi</h1>
         <nav>
           <ul>
             <li>
@@ -32,6 +32,7 @@ export function App() {
         </Route>
         <Route path="*">Not Found</Route>
       </Switch>
+      <footer>API and site created by Karl Frick in St.Petersburg, FL</footer>
     </>
   )
 }
