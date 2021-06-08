@@ -8,14 +8,15 @@ export function App() {
 
   return (
     <div className="app">
-      <header>
-        <h1>Pokegotchi</h1>
+      <header className="header">
+        <h1>
+          <Link to="/">Pokegotchi</Link>
+        </h1>
       </header>
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-
         <Route exact path="/details/:id">
           <Details />
         </Route>
