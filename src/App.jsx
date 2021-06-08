@@ -1,38 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
+import { Details } from './pages/Details'
+import { Home } from './pages/Home'
 
 export function App() {
+  const [tamagotchis, setTamagotchis] = useState()
+
   return (
-    <>
+    <div className="app">
       <header>
         <h1>Pokegotchi</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Go Home</Link>
-            </li>
-            <li>
-              <Link to="/1">Page 1</Link>
-            </li>
-            <li>
-              <Link to="/2">Page 2</Link>
-            </li>
-          </ul>
-        </nav>
       </header>
       <Switch>
         <Route exact path="/">
-          Home
+          <Home />
         </Route>
-        <Route exact path="/1">
-          Page 1
-        </Route>
-        <Route exact path="/2">
-          Page 2
+
+        <Route exact path="/details/:id">
+          <Details />
         </Route>
         <Route path="*">Not Found</Route>
       </Switch>
-      <footer>API and site created by Karl Frick in St.Petersburg, FL</footer>
-    </>
+      <footer>Created by Karl Frick in St.Petersburg, FL</footer>
+    </div>
   )
 }
