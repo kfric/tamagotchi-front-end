@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 
@@ -12,19 +13,28 @@ export function Details() {
 
   const params = useParams()
 
-  useEffect(function () {
-    async function loadPetDetails() {
-      const response = await fetch(
-        `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${params.id}`
-      )
+  async function loadPetDetails() {
+    const response = await fetch(
+      `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${params.id}`
+    )
 
-      if (response.status === 200) {
-        const json = await response.json()
-        setDetails(json)
-      }
+    if (response.status === 200) {
+      const json = await response.json()
+      setDetails(json)
     }
+  }
+
+  useEffect(function () {
     loadPetDetails()
   }, [])
+
+  async function releasePet(event) {
+    event.preventDefault()
+
+    const response = await axios.delete(
+      `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${details.id}`
+    )
+  }
 
   return (
     <div className="container">
@@ -36,15 +46,14 @@ export function Details() {
         <dd>{details.hungerLevel}</dd>
         <dt>Happiness Level</dt>
         <dd>{details.happinessLevel}</dd>
-        <dt>Last Interacted with</dt>
-        <dd>1/1/2021</dd>
-        <dt>Is Dead?</dt>
-        <dd>False</dd>
       </dl>
       <nav className="nav-buttons">
         <button>PLAY</button>
         <button>FEED</button>
         <button>SCOLD</button>
+        <button onClick={releasePet} value={details.id}>
+          RELEASE
+        </button>
       </nav>
     </div>
   )
