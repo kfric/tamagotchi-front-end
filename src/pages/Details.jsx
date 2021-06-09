@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 
 export function Details() {
   const [details, setDetails] = useState({
@@ -12,6 +12,7 @@ export function Details() {
   })
 
   const params = useParams()
+  const history = useHistory()
 
   async function loadPetDetails() {
     const response = await fetch(
@@ -34,6 +35,7 @@ export function Details() {
     const response = await axios.delete(
       `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${details.id}`
     )
+    history.push('/')
   }
 
   return (

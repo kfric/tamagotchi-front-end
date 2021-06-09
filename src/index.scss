@@ -105,11 +105,15 @@ li:hover {
   dt {
     border-radius: 0.25rem;
   }
+
+  dd {
+    margin: 0;
+  }
 }
 
 .nav-buttons {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
 }
 
