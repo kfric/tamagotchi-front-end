@@ -10,7 +10,7 @@ export function App() {
     <div className="layout">
       <header className="header">
         <div className="container">
-          <h1>
+          <h1 className="title">
             <Link to="/">Pokegotchi</Link>
           </h1>
         </div>
