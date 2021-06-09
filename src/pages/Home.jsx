@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 
 export function Home() {
   return (
-    <>
-      <h3>Home page</h3>
-      <ul>
+    <div className="container">
+      <ul className="name-list">
         <li>
           <Link to="/details/1">Pickachu</Link>
         </li>
@@ -40,6 +39,6 @@ export function Home() {
       <form>
         <input type="text" placeholder="New poke name goes here" />
       </form>
-    </>
+    </div>
   )
 }

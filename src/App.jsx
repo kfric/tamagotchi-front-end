@@ -7,22 +7,32 @@ export function App() {
   const [tamagotchis, setTamagotchis] = useState()
 
   return (
-    <div className="app">
+    <div className="layout">
       <header className="header">
-        <h1>
-          <Link to="/">Pokegotchi</Link>
-        </h1>
+        <div className="container">
+          <h1>
+            <Link to="/">Pokegotchi</Link>
+          </h1>
+        </div>
       </header>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/details/:id">
-          <Details />
-        </Route>
-        <Route path="*">Not Found</Route>
-      </Switch>
-      <footer>Created by Karl Frick in St.Petersburg, FL</footer>
+      <main className="main">
+        <div className="container">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/details/:id">
+              <Details />
+            </Route>
+            <Route path="*">Not Found</Route>
+          </Switch>
+        </div>
+      </main>
+      <footer className="footer">
+        <div className="container">
+          Created by Karl Frick in St.Petersburg, FL
+        </div>
+      </footer>
     </div>
   )
 }
