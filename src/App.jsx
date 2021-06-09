@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
+import { NotFound } from './pages/NotFound'
 import { Details } from './pages/Details'
 import { Home } from './pages/Home'
 
 export function App() {
-  const [tamagotchis, setTamagotchis] = useState()
+  const [pets, setPets] = useState()
 
   return (
     <div className="layout">
@@ -24,7 +25,9 @@ export function App() {
             <Route exact path="/details/:id">
               <Details />
             </Route>
-            <Route path="*">Not Found</Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
           </Switch>
         </div>
       </main>
