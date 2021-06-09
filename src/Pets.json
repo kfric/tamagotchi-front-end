@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Thomas",
+    "birthday": "2021-06-09T16:31:52.118984",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  },
+  {
+    "id": 2,
+    "name": "Taya",
+    "birthday": "2021-06-09T16:32:28.840543",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  },
+  {
+    "id": 3,
+    "name": "Pickachu",
+    "birthday": "2021-06-09T16:32:40.600132",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  },
+  {
+    "id": 4,
+    "name": "Charmander",
+    "birthday": "2021-06-09T16:33:05.026883",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  },
+  {
+    "id": 5,
+    "name": "Squirtle",
+    "birthday": "2021-06-09T16:33:12.496499",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  },
+  {
+    "id": 6,
+    "name": "Bulbasaur",
+    "birthday": "2021-06-09T16:33:20.14923",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  },
+  {
+    "id": 7,
+    "name": "Cyndaquil",
+    "birthday": "2021-06-09T16:33:27.30096",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  },
+  {
+    "id": 8,
+    "name": "Chikorita",
+    "birthday": "2021-06-09T16:33:34.594481",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  },
+  {
+    "id": 9,
+    "name": "Totadile",
+    "birthday": "2021-06-09T16:33:42.671732",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  },
+  {
+    "id": 10,
+    "name": "Treecko",
+    "birthday": "2021-06-09T16:33:47.529066",
+    "hungerLevel": 0,
+    "happinessLevel": 0
+  }
+]

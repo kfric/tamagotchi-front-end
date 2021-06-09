@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
 import { NotFound } from './pages/NotFound'
 import { Details } from './pages/Details'
 import { Home } from './pages/Home'
 
 export function App() {
-  const [pets, setPets] = useState()
-
   return (
     <div className="layout">
       <header className="header">
