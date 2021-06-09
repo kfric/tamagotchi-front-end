@@ -1,9 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Pets from '../Pets.json'
 
 export function Home() {
-  const [pets, setPets] = useState(Pets)
+  const [pets, setPets] = useState([])
+
+  useEffect(function () {
+    async function getPets() {
+      const response = await fetch(
+        'https://tamagotchiapi-kfrick.herokuapp.com/api/Pets'
+      )
+
+      if (response.status === 200) {
+        const json = await response.json()
+        setPets(json)
+      }
+    }
+    getPets()
+  }, [])
 
   return (
     <div className="container">
