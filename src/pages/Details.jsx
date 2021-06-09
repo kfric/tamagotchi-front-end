@@ -29,13 +29,43 @@ export function Details() {
     loadPetDetails()
   }, [])
 
-  async function releasePet(event) {
-    event.preventDefault()
-
+  async function releasePet() {
     const response = await axios.delete(
       `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${details.id}`
     )
-    history.push('/')
+    if (response.status === 200) {
+      history.push('/')
+    }
+  }
+
+  async function playPet() {
+    const response = await axios.post(
+      `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${details.id}/Playtimes`,
+      {}
+    )
+    if (response.status === 200) {
+      loadPetDetails()
+    }
+  }
+
+  async function feedPet() {
+    const response = await axios.post(
+      `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${details.id}/Feedings`,
+      {}
+    )
+    if (response.status === 200) {
+      loadPetDetails()
+    }
+  }
+
+  async function scoldPet() {
+    const response = await axios.post(
+      `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${details.id}/Scoldings`,
+      {}
+    )
+    if (response.status === 200) {
+      loadPetDetails()
+    }
   }
 
   return (
@@ -50,12 +80,10 @@ export function Details() {
         <dd>{details.happinessLevel}</dd>
       </dl>
       <nav className="nav-buttons">
-        <button>PLAY</button>
-        <button>FEED</button>
-        <button>SCOLD</button>
-        <button onClick={releasePet} value={details.id}>
-          RELEASE
-        </button>
+        <button onClick={playPet}>PLAY</button>
+        <button onClick={feedPet}>FEED</button>
+        <button onClick={scoldPet}>SCOLD</button>
+        <button onClick={releasePet}>RELEASE</button>
       </nav>
     </div>
   )
