@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Pets from '../Pets.json'
 
 export function Home() {
   const [pets, setPets] = useState([])
@@ -23,8 +22,8 @@ export function Home() {
     <div className="container">
       <ul className="name-list">
         {pets.map(pet => (
-          <li>
-            <Link to="/details/1">{pet.name}</Link>
+          <li key={pet.id}>
+            <Link to={`/details/${pet.id}`}>{pet.name}</Link>
           </li>
         ))}
       </ul>

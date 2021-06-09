@@ -1,16 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
 
 export function Details() {
+  const [details, setDetails] = useState({
+    id: '',
+    name: '',
+    birthday: '',
+    hungerLevel: '',
+    happinessLevel: '',
+  })
+
+  const params = useParams()
+
+  useEffect(function () {
+    async function loadPetDetails() {
+      const response = await fetch(
+        `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${params.id}`
+      )
+
+      if (response.status === 200) {
+        const json = await response.json()
+        setDetails(json)
+      }
+    }
+    loadPetDetails()
+  }, [])
+
   return (
     <div className="container">
-      <h2 className="name">Pickachu</h2>
+      <h2 className="name">{details.name}</h2>
       <dl className="details">
         <dt>Birthday</dt>
-        <dd>01/01/2021</dd>
+        <dd>{details.birthday}</dd>
         <dt>Hunger Level</dt>
-        <dd>3</dd>
+        <dd>{details.hungerLevel}</dd>
         <dt>Happiness Level</dt>
-        <dd>9</dd>
+        <dd>{details.happinessLevel}</dd>
         <dt>Last Interacted with</dt>
         <dd>1/1/2021</dd>
         <dt>Is Dead?</dt>
