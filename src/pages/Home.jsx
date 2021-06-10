@@ -1,11 +1,12 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useImperativeHandle, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export function Home() {
   const [pets, setPets] = useState([])
   const [newPet, setNewPet] = useState('')
   const [loading, setLoading] = useState(true)
+  const [search, setSearch] = useState('')
 
   async function getPets() {
     // const response = await axios.get('https://tamagotchiapi-kfrick.herokuapp.com/api/Pets')
@@ -45,16 +46,28 @@ export function Home() {
     }
   }
 
+  function handlePetFilter(event) {
+    setSearch(event.target.value)
+    console.log(search)
+  }
+
+  const filterPets = pets.filter(pet =>
+    pet.name.toLowerCase().includes(search.toLowerCase())
+  )
+
   return (
     <div className="container">
+      <form className="search-bar">
+        <input type="text" placeholder="Search" onChange={handlePetFilter} />
+      </form>
       <ul className="name-list">
-        {pets.map(pet => (
+        {filterPets.map(pet => (
           <li key={pet.id}>
             <Link to={`/details/${pet.id}`}>{pet.name}</Link>
           </li>
         ))}
       </ul>
-      <form onSubmit={addPet}>
+      <form className="add-bar" onSubmit={addPet}>
         <input
           type="text"
           placeholder="New poke name goes here"
