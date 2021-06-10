@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 export function Home() {
   const [pets, setPets] = useState([])
   const [newPet, setNewPet] = useState('')
+  const [loading, setLoading] = useState(true)
 
   async function getPets() {
     // const response = await axios.get('https://tamagotchiapi-kfrick.herokuapp.com/api/Pets')
@@ -16,11 +17,18 @@ export function Home() {
     if (response.status === 200) {
       const json = await response.json()
       setPets(json)
+
+      setLoading(false)
     }
   }
+
   useEffect(function () {
     getPets()
   }, [])
+
+  if (loading) {
+    return <h2>Loading...</h2>
+  }
 
   async function addPet(event) {
     event.preventDefault()
@@ -31,12 +39,10 @@ export function Home() {
         name: newPet,
       }
     )
-    getPets()
-    setNewPet('')
-  }
-
-  function resetInput(event) {
-    setNewPet(event.target.value)
+    if (response.status === 201) {
+      getPets()
+      setNewPet('')
+    }
   }
 
   return (
@@ -53,7 +59,9 @@ export function Home() {
           type="text"
           placeholder="New poke name goes here"
           value={newPet}
-          onChange={resetInput}
+          onChange={function resetInput(event) {
+            setNewPet(event.target.value)
+          }}
         />
       </form>
     </div>
