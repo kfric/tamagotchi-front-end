@@ -48,18 +48,36 @@ export function Home() {
 
   function handlePetFilter(event) {
     setSearch(event.target.value)
-    console.log(search)
   }
 
   const filterPets = pets.filter(pet =>
     pet.name.toLowerCase().includes(search.toLowerCase())
   )
+  // BUG. app crashes when trying to sort in alphabetical order
+  function sort() {
+    const orderedPets = pets.filter(pet =>
+      pet.name.sort(function (a, b) {
+        if (a < b) {
+          return -1
+        }
+        if (a > b) {
+          return 1
+        }
+        return 0
+      })
+    )
+
+    setPets(orderedPets)
+  }
 
   return (
     <div className="container">
-      <form className="search-bar">
-        <input type="text" placeholder="Search" onChange={handlePetFilter} />
-      </form>
+      <nav className="search-sort">
+        <form className="search-bar">
+          <input type="text" placeholder="Search" onChange={handlePetFilter} />
+        </form>
+        <button onClick={sort}>sort</button>
+      </nav>
       <ul className="name-list">
         {filterPets.map(pet => (
           <li key={pet.id}>
