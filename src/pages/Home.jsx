@@ -10,7 +10,6 @@ export function Home() {
 
   async function getPets() {
     // const response = await axios.get('https://tamagotchiapi-kfrick.herokuapp.com/api/Pets')
-
     const response = await fetch(
       'https://tamagotchiapi-kfrick.herokuapp.com/api/Pets'
     )
@@ -46,37 +45,22 @@ export function Home() {
     }
   }
 
-  function handlePetFilter(event) {
-    setSearch(event.target.value)
-  }
-
   const filterPets = pets.filter(pet =>
     pet.name.toLowerCase().includes(search.toLowerCase())
   )
-  // BUG. app crashes when trying to sort in alphabetical order
-  function sort() {
-    const orderedPets = pets.filter(pet =>
-      pet.name.sort(function (a, b) {
-        if (a < b) {
-          return -1
-        }
-        if (a > b) {
-          return 1
-        }
-        return 0
-      })
-    )
-
-    setPets(orderedPets)
-  }
 
   return (
     <div className="container">
       <nav className="search-sort">
         <form className="search-bar">
-          <input type="text" placeholder="Search" onChange={handlePetFilter} />
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={function (event) {
+              setSearch(event.target.value)
+            }}
+          />
         </form>
-        <button onClick={sort}>sort</button>
       </nav>
       <ul className="name-list">
         {filterPets.map(pet => (
@@ -90,7 +74,7 @@ export function Home() {
           type="text"
           placeholder="New poke name goes here"
           value={newPet}
-          onChange={function resetInput(event) {
+          onChange={function (event) {
             setNewPet(event.target.value)
           }}
         />
