@@ -42,10 +42,6 @@ export function Home() {
     }
   }
 
-  const filterPets = pets.filter(pet =>
-    pet.name.toLowerCase().includes(search.toLowerCase())
-  )
-
   return (
     <div className="container">
       <nav className="search-sort">
@@ -60,11 +56,13 @@ export function Home() {
         </form>
       </nav>
       <ul className="name-list">
-        {filterPets.map(pet => (
-          <li key={pet.id}>
-            <Link to={`/details/${pet.id}`}>{pet.name}</Link>
-          </li>
-        ))}
+        {pets
+          .filter(pet => pet.name.toLowerCase().includes(search.toLowerCase()))
+          .map(pet => (
+            <li key={pet.id}>
+              <Link to={`/details/${pet.id}`}>{pet.name}</Link>
+            </li>
+          ))}
       </ul>
       <form className="add-bar" onSubmit={addPet}>
         <input

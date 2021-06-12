@@ -15,13 +15,12 @@ export function Details() {
   const history = useHistory()
 
   async function loadPetDetails() {
-    const response = await fetch(
+    const response = await axios.get(
       `https://tamagotchiapi-kfrick.herokuapp.com/api/Pets/${params.id}`
     )
 
     if (response.status === 200) {
-      const json = await response.json()
-      setDetails(json)
+      setDetails(response.data)
     }
   }
 
