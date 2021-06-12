@@ -15,6 +15,7 @@ To add, feed, play and scold a POST request was made.
 Site - https://tamagotchi-front-end-karlfrick.netlify.app
 
 Axios website - https://axios-http.com
+
 Axios github - https://github.com/axios/axios
 
 TamagochiAPi - https://tamagotchiapi-kfrick.herokuapp.com/index.html
