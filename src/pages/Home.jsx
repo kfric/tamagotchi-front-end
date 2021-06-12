@@ -9,7 +9,6 @@ export function Home() {
   const [search, setSearch] = useState('')
 
   async function getPets() {
-    // const response = await axios.get('https://tamagotchiapi-kfrick.herokuapp.com/api/Pets')
     const response = await fetch(
       'https://tamagotchiapi-kfrick.herokuapp.com/api/Pets'
     )
@@ -21,6 +20,20 @@ export function Home() {
       setLoading(false)
     }
   }
+  // async function getPets() {
+  //   const response = await axios.get(
+  //     'https://tamagotchiapi-kfrick.herokuapp.com/api/Pets'
+  //   )
+  //   // const response = await fetch(
+  //   //   'https://tamagotchiapi-kfrick.herokuapp.com/api/Pets'
+  //   // )
+
+  //   if (response.status === 200) {
+  //     setPets(response.data)
+
+  //     setLoading(false)
+  //   }
+  // }
 
   useEffect(function () {
     getPets()
